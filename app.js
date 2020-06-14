@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [1, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1, GRID_WIDTH * 3 + 1],
     [GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH + 3],
   ];
+
   const theTetrominoes = [
     lTetromino,
     zTetromino,
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //randomly select tetromino and its first rotation
   let random = Math.floor(Math.random() * theTetrominoes.length);
-  console.log(random);
+  console.log("shape " + random);
   let current = theTetrominoes[random][currentRotation];
 
   //draw the tetromino
@@ -62,6 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
       squares[currentPosition + index].classList.add("tetromino");
     });
   }
-
+  draw();
   //undraw the tetromino
+  function undraw() {
+    current.forEach((index) => {
+      squares[currentPosition + index].classList.remove("tetromino");
+    });
+  }
+  // make the tretomino move donw every second
 });
