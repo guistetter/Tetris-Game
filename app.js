@@ -63,12 +63,19 @@ document.addEventListener("DOMContentLoaded", () => {
       squares[currentPosition + index].classList.add("tetromino");
     });
   }
-  draw();
+
   //undraw the tetromino
   function undraw() {
     current.forEach((index) => {
       squares[currentPosition + index].classList.remove("tetromino");
     });
   }
-  // make the tretomino move donw every second
+  // make the tretomino move down every second
+  timerId = setInterval(moveDown, 1000);
+  //move down function
+  function moveDown() {
+    undraw();
+    currentPosition += GRID_WIDTH;
+    draw();
+  }
 });
